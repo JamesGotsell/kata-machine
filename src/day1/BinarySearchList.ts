@@ -15,27 +15,46 @@ export default function bs_list(haystack: number[], needle: number): boolean {
     //     high = midpoint 
 //  } while (low < high)
 // return false 
-    let low = haystack[0]
-    let high = haystack[haystack.length-1]
+    // let low = haystack[0]
+    // let high = haystack[haystack.length-1]
+    // do {
+    //     console.log(haystack)
+    //     //  not getting the mid point index 
+    //     let mid = [haystack[0] + (haystack[haystack.length -1 ] - haystack[0]) / 2 ]
+    //     // 
+    //     let val =  haystack[mid] 
+    //     if(val === needle) {
+    //         return true
+    //     }
+    //     else if (val > mid) {
+    //         low = mid + 1 
+    //     }else {
+    //         high = mid
+    //     }
+  
+    // console.log(low, '-------- low')
+    // console.log(mid, '-------- mid')
+    // console.log(high, '-------- high')
+    // return false 
+    // }while (low <  high)
+
+    let lo = 0;
+    let hi = haystack.length
+
     do {
-        console.log(haystack)
-        //  not getting the mid point index 
-        let mid = [haystack[0] + (haystack[haystack.length -1 ] - haystack[0]) / 2 ]
-        // 
-        let val =  haystack[mid] 
-        if(val === needle) {
+        const m = Math.floor(lo + (hi - lo )/ 2);
+        const v = haystack[m]
+        if(v === needle) {
             return true
         }
-        else if (val > mid) {
-            low = mid + 1 
-        }else {
-            high = mid
+        else if (v > needle) {
+            hi = m 
         }
-  
-    console.log(low, '-------- low')
-    console.log(mid, '-------- mid')
-    console.log(high, '-------- high')
-    return false 
-    }while (low <  high)
+        else {
+            lo = m + 1
+        }
+    } while(lo < hi)
+
+    return false
 
 }
